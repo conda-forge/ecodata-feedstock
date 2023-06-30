@@ -1,5 +1,5 @@
 {% set name = "ecodata" %}
-{% set version = "0.2.4" %}
+{% set version = "0.2.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 01a1b56ddd211c01b3002152f3f219d7e73ffe216897f04a9776c0994f96c873
+  sha256: 3bbe402bf2c914ef61d8795cd99886ab48a7a340fc058f6824036ae2c077054c
 
 build:
   noarch: python
