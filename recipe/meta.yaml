@@ -73,7 +73,7 @@ outputs:
       build:
         - sed     # [unix]
       run:
-        - ecodata {{ version }}.*
+        - ecodata
     test:
       imports:
         - ecodata
