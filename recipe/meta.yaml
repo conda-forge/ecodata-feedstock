@@ -2,7 +2,7 @@
 {% set version = "0.3.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name|lower }}-meta
 
 source:
   - url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
@@ -14,7 +14,7 @@ build:
   number: 0
 
 outputs:
-  - name: ecodata
+  - name: {{ name|lower }}
     version: {{ version }}
     build:
       noarch: python
@@ -61,7 +61,7 @@ outputs:
       doc_url: https://ecodata-apps.readthedocs.io
       dev_url: https://github.com/jemissik/ecodata
 
-  - name: ecodata-menu
+  - name: {{ name|lower }}-menu
     version: {{version}}
     build:
       noarch: python
@@ -100,7 +100,7 @@ about:
   dev_url: https://github.com/jemissik/ecodata
 
 extra:
-  feedstock-name: ecodata
+  feedstock-name: {{ name|lower }}
   recipe-maintainers:
     - jemissik
     - madeline-scyphers
