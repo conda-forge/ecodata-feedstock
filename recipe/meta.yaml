@@ -1,5 +1,5 @@
 {% set name = "ecodata" %}
-{% set version = "0.2.5" %}
+{% set version = "0.2.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,44 +7,84 @@ package:
 
 source:
   url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 3bbe402bf2c914ef61d8795cd99886ab48a7a340fc058f6824036ae2c077054c
+  sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PREFIX }}/bin/python -m pip install . -vv
   number: 0
 
-requirements:
-  host:
-    - python >3.8
-    - pip
-  run:
-    - python >3.8
-    - cartopy
-    - geopandas
-    - matplotlib
-    - pandas
-    - shapely <2.0
-    - xarray
-    - dask ==2023.4.0
-    - netCDF4
-    - bottleneck
-    - cfgrib
-    - rasterio
-    - numpy <1.24
-    - rioxarray
-    - hvplot
-    - bokeh <3
-    - panel ==0.14.4
-    - datashader
-    - geoviews
-    - geocube
-    - ffmpeg
-    - gdown
+outputs:
+  - name: ecodata
+    build:
+      noarch: python
+      script: {{ PREFIX }}/bin/python -m pip install .
+    requirements:
+      host:
+        - python >3.8
+        - pip
+      run:
+        - python >3.8
+        - cartopy
+        - geopandas
+        - matplotlib
+        - pandas
+        - shapely <2.0
+        - xarray
+        - dask ==2023.4.0
+        - netCDF4
+        - bottleneck
+        - cfgrib
+        - rasterio
+        - numpy <1.24
+        - rioxarray
+        - hvplot
+        - bokeh <3.4
+        - panel >=1,<1.4
+        - datashader
+        - geoviews >=1.10
+        - geocube
+        - ffmpeg
+        - gdown <4.6
 
-test:
-  imports:
-    - ecodata
+    test:
+      imports:
+        - ecodata
+
+    about:
+      summary: |
+        Tools to access and process remote sensing and other environmental
+        data products and prepare them for further use along with animal movement data
+      home: https://github.com/jemissik/ecodata
+      license: MIT
+      license_file: LICENSE
+      doc_url: https://ecodata-apps.readthedocs.io
+      dev_url: https://github.com/jemissik/ecodata
+
+  - name: ecodata-menu
+    build:
+      noarch: python
+      script:
+        - mkdir -p "${PREFIX}/Menu"
+        - sed "s/__PKG_VERSION__/{{ PKG_VERSION }}/" "{{ SRC_DIR }}/resources/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
+    requirements:
+      build:
+        - sed  # [unix]
+      run:
+        - ecodata {{ version }}.*
+    test:
+      imports:
+        - ecodata
+      commands:
+        - test -f ${CONDA_PREFIX}/Menu/ecodata-menu.json
+    about:
+      home: https://github.com/jemissik/ecodata
+      license: MIT
+      license_file: LICENSE
+      doc_url: https://ecodata-apps.readthedocs.io
+      dev_url: https://github.com/jemissik/ecodata
+      summary: provides menu icons for ecodata
+      description: provides menu icons for ecodata
 
 about:
   summary: |
