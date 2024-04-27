@@ -1,5 +1,5 @@
 {% set name = "ecodata" %}
-{% set version = "0.2.6" %}
+{% set version = "0.2.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
+  sha256: 747c28102b139a35b91ffd2bb182cee615ca2f0a88d4a35bc13890611de98903
 
 build:
   noarch: python
@@ -21,17 +21,17 @@ outputs:
       script: {{ PREFIX }}/bin/python -m pip install .
     requirements:
       host:
-        - python >3.8
+        - python >3.10
         - pip
       run:
-        - python >3.8
+        - python >3.10
         - cartopy
         - geopandas
         - matplotlib
         - pandas
         - shapely <2.0
         - xarray
-        - dask ==2023.4.0
+        - dask 
         - netCDF4
         - bottleneck
         - cfgrib
