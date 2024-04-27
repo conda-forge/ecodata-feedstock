@@ -5,6 +5,7 @@ source:
   - url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
     sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
   - url: https://raw.githubusercontent.com/jemissik/ecodata/v{{ version }}/resources/conda_menu_config.json
+    folder: resources
     sha256: e75495779da2814e856fa8baba0b1d375906e050b9dc2dadeb1f2b8be0972118
 
 build:
