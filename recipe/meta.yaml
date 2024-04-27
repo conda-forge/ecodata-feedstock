@@ -5,7 +5,7 @@ package:
   name: {{ name|lower }}-pkgs
 
 source:
-  - url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
+  - url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
     sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
   - url: https://raw.githubusercontent.com/jemissik/ecodata/v{{ version }}/resources/conda_menu_config.json
     folder: resources
@@ -77,7 +77,7 @@ outputs:
       build:
         - sed     # [unix]
       run:
-        - {{ pin_subpackage("ecodata", exact=True) }}
+        - ecodata {{ version }}.*
     test:
       imports:
         - ecodata
