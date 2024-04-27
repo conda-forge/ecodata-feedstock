@@ -3,6 +3,7 @@ About ecodata-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ecodata-feedstock/blob/main/LICENSE.txt)
 
+
 About ecodata
 -------------
 
@@ -13,13 +14,25 @@ Package license: MIT
 Summary: Tools to access and process remote sensing and other environmental
 data products and prepare them for further use along with animal movement data
 
+
+Development: https://github.com/jemissik/ecodata
+
+Documentation: https://ecodata-apps.readthedocs.io
+
 About ecodata-menu
 ------------------
+
 Home: https://github.com/jemissik/ecodata
 
 Package license: MIT
 
-Summary: Provides a menu for the ecodata package
+Summary: provides menu icons for ecodata
+
+Development: https://github.com/jemissik/ecodata
+
+Documentation: https://ecodata-apps.readthedocs.io
+
+provides menu icons for ecodata
 
 Current build status
 ====================
@@ -40,6 +53,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-ecodata-green.svg)](https://anaconda.org/conda-forge/ecodata) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ecodata.svg)](https://anaconda.org/conda-forge/ecodata) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ecodata.svg)](https://anaconda.org/conda-forge/ecodata) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ecodata.svg)](https://anaconda.org/conda-forge/ecodata) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ecodata--menu-green.svg)](https://anaconda.org/conda-forge/ecodata-menu) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ecodata-menu.svg)](https://anaconda.org/conda-forge/ecodata-menu) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ecodata-menu.svg)](https://anaconda.org/conda-forge/ecodata-menu) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ecodata-menu.svg)](https://anaconda.org/conda-forge/ecodata-menu) |
 
 Installing ecodata
 ==================
@@ -107,7 +121,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
@@ -157,3 +171,4 @@ Feedstock Maintainers
 
 * [@jemissik](https://github.com/jemissik/)
 * [@madeline-scyphers](https://github.com/madeline-scyphers/)
+
