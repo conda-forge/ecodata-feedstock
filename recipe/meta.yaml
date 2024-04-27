@@ -16,7 +16,7 @@ outputs:
     version: {{ version }}
     build:
       noarch: python
-      script: PYTHONDONTWRITEBYTECODE=1 PIP_NO_INDEX=1 PIP_IGNORE_INSTALLED=1 {{ PREFIX }}/bin/python -m pip install -vv --no-deps --no-build-isolation .
+      script: {{ PYTHON }}/bin/python -m pip install .
       entry_points:
         - ecodata = ecodata.app.__main__:main
     requirements:
