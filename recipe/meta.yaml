@@ -2,14 +2,11 @@
 {% set version = "0.2.6" %}
 
 package:
-  name: ecodata-meta
+  name: ecodata
 
 source:
   - url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
     sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
-  - url: https://raw.githubusercontent.com/jemissik/ecodata/v{{ version }}/resources/conda_menu_config.json
-    folder: resources
-    sha256: e75495779da2814e856fa8baba0b1d375906e050b9dc2dadeb1f2b8be0972118
 
 build:
   number: 0
@@ -72,32 +69,7 @@ outputs:
       doc_url: https://ecodata-apps.readthedocs.io
       dev_url: https://github.com/jemissik/ecodata
 
-  - name: ecodata-menu
-    version: {{ version }}
-    build:
-      noarch: python
-      script:
-        - mkdir -p "${PREFIX}/Menu"
-        - sed "s/__PKG_VERSION__/{{ PKG_VERSION }}/" "{{ SRC_DIR }}/resources/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
-        - cp "{{ SRC_DIR }}/ecodata/resources/ecodata-icon.png" "{{ PREFIX }}/Menu/ecodata-icon.png"
-    requirements:
-      build:
-        - sed  # [unix]
-      run:
-        - ecodata {{ version }}.*
-    test:
-      imports:
-        - ecodata
-      commands:
-        - test -f ${CONDA_PREFIX}/Menu/ecodata-menu.json
-    about:
-      home: https://github.com/jemissik/ecodata
-      license: MIT
-      license_file: LICENSE
-      doc_url: https://ecodata-apps.readthedocs.io
-      dev_url: https://github.com/jemissik/ecodata
-      summary: provides menu icons for ecodata
-      description: provides menu icons for ecodata
+
 about:
   summary: |
     Tools to access and process remote sensing and other environmental
