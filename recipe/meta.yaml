@@ -1,6 +1,9 @@
 {% set name = "ecodata" %}
 {% set version = "0.2.6" %}
 
+package:
+  name: {{ name|lower }}-pkgs
+
 source:
   - url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
     sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
