@@ -18,7 +18,7 @@ outputs:
     version: {{ version }}
     build:
       noarch: python
-      script: {{ PYTHON }} -m pip install . -vv
+      script: {{ PREFIX }}/bin/python -m pip install . -vv
 
     requirements:
       host:
