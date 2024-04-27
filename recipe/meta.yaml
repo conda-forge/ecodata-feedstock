@@ -16,7 +16,7 @@ outputs:
     version: {{ version }}
     build:
       noarch: python
-      script: {{ PYTHON }}/bin/python -m pip install .
+      script: {{ PREFIX }}/bin/python -m pip install .
       entry_points:
         - ecodata = ecodata.app.__main__:main
     requirements:
