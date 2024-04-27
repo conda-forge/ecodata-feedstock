@@ -19,7 +19,7 @@ outputs:
     version: {{ version }}
     build:
       noarch: python
-      script: {{ PREFIX }}/bin/python -m pip install . -vv
+      script: PIP_NO_INDEX=True PIP_NO_DEPENDENCIES=True PIP_NO_BUILD_ISOLATION=False PIP_IGNORE_INSTALLED=True PYTHONDONTWRITEBYTECODE=True {{ PREFIX }}/bin/python -m pip install . -vv
 
     requirements:
       build:
