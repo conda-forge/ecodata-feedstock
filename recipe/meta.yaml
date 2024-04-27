@@ -51,6 +51,42 @@ outputs:
       imports:
         - ecodata
 
+    about:
+      summary: |
+        Tools to access and process remote sensing and other environmental
+        data products and prepare them for further use along with animal movement data
+      home: https://github.com/jemissik/ecodata
+      license: MIT
+      license_file: LICENSE
+      doc_url: https://ecodata-apps.readthedocs.io
+      dev_url: https://github.com/jemissik/ecodata
+
+  - name: ecodata-menu
+    build:
+      noarch: python
+      script:
+        - mkdir -p "${PREFIX}/Menu"
+        - sed "s/__PKG_VERSION__/{{ PKG_VERSION }}/" "{{ SRC_DIR }}/resources/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
+        - cp "{{ SRC_DIR }}/ecodata/resources/ecodata-icon.png" "{{ PREFIX }}/Menu/ecodata-icon.png"
+    requirements:
+      build:
+        - sed  # [unix]
+      run:
+        - ecodata {{ version }}.*
+    test:
+      imports:
+        - ecodata
+      commands:
+        - test -f ${CONDA_PREFIX}/Menu/ecodata-menu.json
+    about:
+      home: https://github.com/jemissik/ecodata
+      license: MIT
+      license_file: LICENSE
+      doc_url: https://ecodata-apps.readthedocs.io
+      dev_url: https://github.com/jemissik/ecodata
+      summary: provides menu icons for ecodata
+      description: provides menu icons for ecodata
+
 about:
   summary: |
     Tools to access and process remote sensing and other environmental
