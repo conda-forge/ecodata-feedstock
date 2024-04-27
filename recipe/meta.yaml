@@ -73,7 +73,7 @@ outputs:
       build:
         - sed     # [unix]
       run:
-        - ecodata
+        - {{ pin_subpackage("ecodata", exact=True) }}
     test:
       imports:
         - ecodata
