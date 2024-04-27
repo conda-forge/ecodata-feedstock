@@ -3,6 +3,9 @@ About ecodata-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ecodata-feedstock/blob/main/LICENSE.txt)
 
+About ecodata
+-------------
+
 Home: https://github.com/jemissik/ecodata
 
 Package license: MIT
@@ -10,6 +13,13 @@ Package license: MIT
 Summary: Tools to access and process remote sensing and other environmental
 data products and prepare them for further use along with animal movement data
 
+About ecodata-menu
+------------------
+Home: https://github.com/jemissik/ecodata
+
+Package license: MIT
+
+Summary: Provides a menu for the ecodata package
 
 Current build status
 ====================
@@ -41,16 +51,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `ecodata` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `ecodata, ecodata-menu` can be installed with `conda`:
 
 ```
-conda install ecodata
+conda install ecodata ecodata-menu
 ```
 
 or with `mamba`:
 
 ```
-mamba install ecodata
+mamba install ecodata ecodata-menu
 ```
 
 It is possible to list all of the versions of `ecodata` available on your platform with `conda`:
@@ -147,4 +157,3 @@ Feedstock Maintainers
 
 * [@jemissik](https://github.com/jemissik/)
 * [@madeline-scyphers](https://github.com/madeline-scyphers/)
-
