@@ -2,8 +2,7 @@
 {% set version = "0.2.6" %}
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ecodata-meta
 
 source:
   - url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
@@ -16,21 +15,26 @@ build:
   number: 0
 
 outputs:
-  - name: {{ name|lower }}
+  - name: ecodata
+    version: {{ version }}
     build:
       noarch: python
-      script: PIP_NO_INDEX=True PIP_NO_DEPENDENCIES=True PIP_NO_BUILD_ISOLATION=False PIP_IGNORE_INSTALLED=True PYTHONDONTWRITEBYTECODE=True {{ PREFIX }}/bin/python -m pip install . -vv
+      script: PYTHONDONTWRITEBYTECODE=1 PIP_NO_INDEX=1 PIP_IGNORE_INSTALLED=1 {{ PREFIX }}/bin/python -m pip install -vv --no-deps --no-build-isolation .
       entry_points:
-         - ecodata = ecodata.app.__main__:main
+        - ecodata = ecodata.app.__main__:main
     requirements:
       build:
-        - setuptools_scm
+        - python >=3.10
+        - python-build
+        - setuptools >=64
+        - setuptools-scm >=8
       host:
-        - python >3.8
+        - python >=3.10
         - pip
-        - setuptools_scm
+        - setuptools >=64
+        - setuptools-scm >=8
       run:
-        - python >3.8
+        - python >3.10
         - cartopy
         - geopandas
         - matplotlib
@@ -51,11 +55,13 @@ outputs:
         - geocube
         - ffmpeg
         - gdown <4.6
-
     test:
+      requires:
+        - pip
       imports:
         - ecodata
-
+      commands:
+        - pip check
     about:
       summary: |
         Tools to access and process remote sensing and other environmental
@@ -66,7 +72,8 @@ outputs:
       doc_url: https://ecodata-apps.readthedocs.io
       dev_url: https://github.com/jemissik/ecodata
 
-  - name: {{ name|lower }}-menu
+  - name: ecodata-menu
+    version: {{ version }}
     build:
       noarch: python
       script:
@@ -75,7 +82,7 @@ outputs:
         - cp "{{ SRC_DIR }}/ecodata/resources/ecodata-icon.png" "{{ PREFIX }}/Menu/ecodata-icon.png"
     requirements:
       build:
-        - sed     # [unix]
+        - sed  # [unix]
       run:
         - ecodata {{ version }}.*
     test:
@@ -83,7 +90,6 @@ outputs:
         - ecodata
       commands:
         - test -f ${CONDA_PREFIX}/Menu/ecodata-menu.json
-
     about:
       home: https://github.com/jemissik/ecodata
       license: MIT
@@ -92,7 +98,6 @@ outputs:
       dev_url: https://github.com/jemissik/ecodata
       summary: provides menu icons for ecodata
       description: provides menu icons for ecodata
-
 about:
   summary: |
     Tools to access and process remote sensing and other environmental
@@ -104,7 +109,6 @@ about:
   dev_url: https://github.com/jemissik/ecodata
 
 extra:
-  feedstock-name: {{ name|lower }}
+  feedstock-name: ecodata
   recipe-maintainers:
-    - jemissik
-    - madeline-scyphers
+    - jwindhager
