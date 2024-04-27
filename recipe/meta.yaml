@@ -2,95 +2,48 @@
 {% set version = "0.2.6" %}
 
 package:
-  name: {{ name|lower }}-pkgs
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
-    sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
-#  - url: https://raw.githubusercontent.com/jemissik/ecodata/v{{ version }}/resources/conda_menu_config.json
-#    folder: resources
-#    sha256: e75495779da2814e856fa8baba0b1d375906e050b9dc2dadeb1f2b8be0972118
+  url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
+  sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
 
 build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
   number: 0
 
-outputs:
-  - name: {{ name|lower }}
-    build:
-      noarch: python
-      script: {{ PREFIX }}/bin/python -m pip install . -vv
+requirements:
+  host:
+    - python >3.8
+    - pip
+  run:
+    - python >3.8
+    - cartopy
+    - geopandas
+    - matplotlib
+    - pandas
+    - shapely <2.0
+    - xarray
+    - dask ==2023.4.0
+    - netCDF4
+    - bottleneck
+    - cfgrib
+    - rasterio
+    - numpy <1.24
+    - rioxarray
+    - hvplot
+    - panel >=1,<1.4
+    - datashader
+    - geoviews >=1.10
+    - geocube
+    - ffmpeg
+    - gdown <4.6
 
-    requirements:
-      build:
-        - setuptools_scm
-      host:
-        - python >3.8
-        - pip
-        - setuptools_scm
-      run:
-        - python >3.8
-        - cartopy
-        - geopandas
-        - matplotlib
-        - pandas
-        - shapely <2.0
-        - xarray
-        - dask ==2023.4.0
-        - netCDF4
-        - bottleneck
-        - cfgrib
-        - rasterio
-        - numpy <1.24
-        - rioxarray
-        - hvplot
-        - panel >=1,<1.4
-        - datashader
-        - geoviews >=1.10
-        - geocube
-        - ffmpeg
-        - gdown <4.6
-
-    test:
-      imports:
-        - ecodata
-
-    about:
-      summary: |
-        Tools to access and process remote sensing and other environmental
-        data products and prepare them for further use along with animal movement data
-      home: https://github.com/jemissik/ecodata
-      license: MIT
-      license_file: LICENSE
-      doc_url: https://ecodata-apps.readthedocs.io
-      dev_url: https://github.com/jemissik/ecodata
-
-#  - name: {{ name|lower }}-menu
-#    build:
-#      noarch: python
-#      script:
-#        - mkdir -p "${PREFIX}/Menu"
-#        - sed "s/__PKG_VERSION__/{{ PKG_VERSION }}/" "{{ SRC_DIR }}/resources/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
-#        - cp "{{ SRC_DIR }}/ecodata/resources/ecodata-icon.png" "{{ PREFIX }}/Menu/ecodata-icon.png"
-#    requirements:
-#      build:
-#        - sed     # [unix]
-#      run:
-#        - ecodata {{ version }}.*
-#    test:
-#      imports:
-#        - ecodata
-#      commands:
-#        - test -f ${CONDA_PREFIX}/Menu/ecodata-menu.json
-#
-#    about:
-#      home: https://github.com/jemissik/ecodata
-#      license: MIT
-#      license_file: LICENSE
-#      doc_url: https://ecodata-apps.readthedocs.io
-#      dev_url: https://github.com/jemissik/ecodata
-#      summary: provides menu icons for ecodata
-#      description: provides menu icons for ecodata
+test:
+  imports:
+    - ecodata
 
 about:
   summary: |
@@ -99,11 +52,8 @@ about:
   home: https://github.com/jemissik/ecodata
   license: MIT
   license_file: LICENSE
-  doc_url: https://ecodata-apps.readthedocs.io
-  dev_url: https://github.com/jemissik/ecodata
 
 extra:
-  feedstock-name: {{ name|lower }}
   recipe-maintainers:
     - jemissik
     - madeline-scyphers
