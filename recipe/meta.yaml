@@ -2,7 +2,7 @@
 {% set version = "0.2.6" %}
 
 package:
-  name: ecodata
+  name: ecodata-meta
 
 source:
   - url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
