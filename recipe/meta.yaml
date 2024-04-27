@@ -10,12 +10,13 @@ source:
   sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
 
 build:
-  noarch: python
-  script: {{ PREFIX }}/bin/python -m pip install . -vv
   number: 0
 
 outputs:
   - name: ecodata
+    build:
+      noarch: python
+      script: { { PREFIX } }/bin/python -m pip install .
     requirements:
       host:
         - python >3.8
