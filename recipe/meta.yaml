@@ -1,14 +1,14 @@
 {% set name = "ecodata" %}
-{% set version = "0.3.0" %}
+{% set version = "0.2.6" %}
 
 package:
   name: {{ name|lower }}-meta
 
 source:
   - url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 95e437584a98be17d16f35b2de0401c86e13e1b04c82aa7aa61bef7f13ca9069
+    sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
   - url: https://raw.githubusercontent.com/jemissik/ecodata/v{{ version }}/resources/conda_menu_config.json
-    sha256: ffa9f3a889c20aadd9da3db5ebe7d2b9c618b62c288d1c06f1ac857c139c49cf
+    sha256: e75495779da2814e856fa8baba0b1d375906e050b9dc2dadeb1f2b8be0972118
 
 build:
   number: 0
