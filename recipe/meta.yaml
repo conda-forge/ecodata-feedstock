@@ -3,6 +3,7 @@
 
 package:
   name: {{ name|lower }}-pkgs
+  version: {{ version }}
 
 source:
   - url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
@@ -16,7 +17,6 @@ build:
 
 outputs:
   - name: {{ name|lower }}
-    version: {{ version }}
     build:
       noarch: python
       script: PIP_NO_INDEX=True PIP_NO_DEPENDENCIES=True PIP_NO_BUILD_ISOLATION=False PIP_IGNORE_INSTALLED=True PYTHONDONTWRITEBYTECODE=True {{ PREFIX }}/bin/python -m pip install . -vv
@@ -66,7 +66,6 @@ outputs:
       dev_url: https://github.com/jemissik/ecodata
 
   - name: {{ name|lower }}-menu
-    version: {{ version }}
     build:
       noarch: python
       script:
