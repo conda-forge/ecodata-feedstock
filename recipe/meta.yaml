@@ -2,36 +2,26 @@
 {% set version = "0.2.6" %}
 
 package:
-  name: ecodata-meta
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  - url: https://github.com/jemissik/ecodata/archive/v{{ version }}.tar.gz
-    sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
+  url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 095ea878297e7275773cf5ba9be969ccb9ec015be846edf2c13aef6a77ca6153
 
 build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
   number: 0
 
 outputs:
   - name: ecodata
-    version: {{ version }}
-    build:
-      noarch: python
-      script: {{ PREFIX }}/bin/python -m pip install .
-      entry_points:
-        - ecodata = ecodata.app.__main__:main
     requirements:
-      build:
-        - python >=3.10
-        - python-build
-        - setuptools >=64
-        - setuptools-scm >=8
       host:
-        - python >=3.10
+        - python >3.8
         - pip
-        - setuptools >=64
-        - setuptools-scm >=8
       run:
-        - python >3.10
+        - python >3.8
         - cartopy
         - geopandas
         - matplotlib
@@ -46,30 +36,17 @@ outputs:
         - numpy <1.24
         - rioxarray
         - hvplot
-        - bokeh <3.4
-        - panel >=1,<1.4
+        - bokeh <3
+        - panel ==0.14.4
         - datashader
-        - geoviews >=1.10
+        - geoviews
         - geocube
         - ffmpeg
-        - gdown <4.6
+        - gdown
+
     test:
-      requires:
-        - pip
       imports:
         - ecodata
-      commands:
-        - pip check
-    about:
-      summary: |
-        Tools to access and process remote sensing and other environmental
-        data products and prepare them for further use along with animal movement data
-      home: https://github.com/jemissik/ecodata
-      license: MIT
-      license_file: LICENSE
-      doc_url: https://ecodata-apps.readthedocs.io
-      dev_url: https://github.com/jemissik/ecodata
-
 
 about:
   summary: |
@@ -78,11 +55,8 @@ about:
   home: https://github.com/jemissik/ecodata
   license: MIT
   license_file: LICENSE
-  doc_url: https://ecodata-apps.readthedocs.io
-  dev_url: https://github.com/jemissik/ecodata
 
 extra:
-  feedstock-name: ecodata
   recipe-maintainers:
     - jemissik
     - madeline-scyphers
