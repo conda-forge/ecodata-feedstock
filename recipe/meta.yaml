@@ -46,6 +46,7 @@ outputs:
         - numpy <1.24
         - rioxarray
         - hvplot
+        - bokeh <3.4
         - panel >=1,<1.4
         - datashader
         - geoviews >=1.10
