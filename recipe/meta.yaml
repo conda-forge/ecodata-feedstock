@@ -111,4 +111,5 @@ about:
 extra:
   feedstock-name: ecodata
   recipe-maintainers:
-    - jwindhager
+    - jemissik
+    - madeline-scyphers
