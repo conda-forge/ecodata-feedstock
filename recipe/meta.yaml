@@ -1,5 +1,5 @@
 {% set name = "ecodata" %}
-{% set version = "0.2.7" %}
+{% set version = "0.2.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/jemissik/ecodata/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 747c28102b139a35b91ffd2bb182cee615ca2f0a88d4a35bc13890611de98903
+  sha256: 9d0dd3643a9af4e0cbc37ba0c7444c3fa3af1c68334bc4713b890c69d27e2860
 
 build:
   noarch: python
@@ -31,7 +31,7 @@ outputs:
         - pandas
         - shapely <2.0
         - xarray
-        - dask 
+        - dask
         - netCDF4
         - bottleneck
         - cfgrib
