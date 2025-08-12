@@ -63,23 +63,29 @@ outputs:
       license_file: LICENSE
       doc_url: https://ecodata-apps.readthedocs.io
       dev_url: https://github.com/jemissik/ecodata
-
+  
   - name: ecodata-menu
     build:
       noarch: python
       script:
-        - mkdir -p "${PREFIX}/Menu"
-        - sed "s/__PKG_VERSION__/{{ PKG_VERSION }}/" "{{ SRC_DIR }}/resources/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
+        - mkdir -p "{{ PREFIX }}/Menu"
+        - sed "s/__PKG_VERSION__/{{ PKG_VERSION }}/" "{{ RECIPE_DIR }}/menu/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
+        - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.png" "{{ PREFIX }}/Menu/ecodata-icon.png"
+        - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.icns" "{{ PREFIX }}/Menu/ecodata-icon.icns"
+        - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.ico" "{{ PREFIX }}/Menu/ecodata-icon.ico"
+        
     requirements:
       build:
         - sed  # [unix]
+      host:
+        - python >3.11
       run:
-        - ecodata {{ version }}.*
+        - python >=3.11
+        - {{ pin_subpackage('ecodata', exact=True) }}
+
     test:
       imports:
         - ecodata
-      commands:
-        - test -f ${CONDA_PREFIX}/Menu/ecodata-menu.json
     about:
       home: https://github.com/jemissik/ecodata
       license: MIT
