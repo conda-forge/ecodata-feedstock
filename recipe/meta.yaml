@@ -95,15 +95,12 @@ outputs:
       summary: provides menu icons for ecodata
       description: provides menu icons for ecodata
 
-  - name: ecodata-menu-dev
+  - name: ecodata-dev-menu
     build:
       noarch: python
       script:
         - mkdir -p "{{ PREFIX }}/Menu"
-        - sed "s/__PKG_VERSION__/Pre-release/" "{{ RECIPE_DIR }}/menu/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
-        - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.png" "{{ PREFIX }}/Menu/ecodata-icon.png"
-        - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.icns" "{{ PREFIX }}/Menu/ecodata-icon.icns"
-        - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.ico" "{{ PREFIX }}/Menu/ecodata-icon.ico"
+        - sed "s/__PKG_VERSION__/Pre-release/" "{{ RECIPE_DIR }}/menu/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-dev-menu.json"
 
     requirements:
       build:
