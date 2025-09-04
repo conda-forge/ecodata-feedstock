@@ -34,6 +34,21 @@ Documentation: https://ecodata-apps.readthedocs.io
 
 provides menu icons for ecodata
 
+About ecodata-menu-dev
+----------------------
+
+Home: https://github.com/jemissik/ecodata
+
+Package license: MIT
+
+Summary: provides menu icons for ecodata prereleases
+
+Development: https://github.com/jemissik/ecodata
+
+Documentation: https://ecodata-apps.readthedocs.io
+
+provides menu icons for ecodata prereleases
+
 Current build status
 ====================
 
@@ -54,6 +69,7 @@ Current release info
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-ecodata-green.svg)](https://anaconda.org/conda-forge/ecodata) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ecodata.svg)](https://anaconda.org/conda-forge/ecodata) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ecodata.svg)](https://anaconda.org/conda-forge/ecodata) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ecodata.svg)](https://anaconda.org/conda-forge/ecodata) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-ecodata--menu-green.svg)](https://anaconda.org/conda-forge/ecodata-menu) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ecodata-menu.svg)](https://anaconda.org/conda-forge/ecodata-menu) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ecodata-menu.svg)](https://anaconda.org/conda-forge/ecodata-menu) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ecodata-menu.svg)](https://anaconda.org/conda-forge/ecodata-menu) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ecodata--menu--dev-green.svg)](https://anaconda.org/conda-forge/ecodata-menu-dev) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ecodata-menu-dev.svg)](https://anaconda.org/conda-forge/ecodata-menu-dev) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ecodata-menu-dev.svg)](https://anaconda.org/conda-forge/ecodata-menu-dev) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ecodata-menu-dev.svg)](https://anaconda.org/conda-forge/ecodata-menu-dev) |
 
 Installing ecodata
 ==================
@@ -65,16 +81,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `ecodata, ecodata-menu` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `ecodata, ecodata-menu, ecodata-menu-dev` can be installed with `conda`:
 
 ```
-conda install ecodata ecodata-menu
+conda install ecodata ecodata-menu ecodata-menu-dev
 ```
 
 or with `mamba`:
 
 ```
-mamba install ecodata ecodata-menu
+mamba install ecodata ecodata-menu ecodata-menu-dev
 ```
 
 It is possible to list all of the versions of `ecodata` available on your platform with `conda`:

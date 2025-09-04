@@ -12,7 +12,7 @@ source:
 build:
   noarch: python
   script: {{ PREFIX }}/bin/python -m pip install . -vv
-  number: 1
+  number: 2
 
 outputs:
   - name: ecodata
@@ -63,17 +63,18 @@ outputs:
       license_file: LICENSE
       doc_url: https://ecodata-apps.readthedocs.io
       dev_url: https://github.com/jemissik/ecodata
-  
+
   - name: ecodata-menu
     build:
       noarch: python
       script:
         - mkdir -p "{{ PREFIX }}/Menu"
         - sed "s/__PKG_VERSION__/{{ PKG_VERSION }}/" "{{ RECIPE_DIR }}/menu/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu.json"
+        - sed "s/__PKG_VERSION__/Pre-release/" "{{ RECIPE_DIR }}/menu/conda_menu_config.json" > "{{ PREFIX }}/Menu/ecodata-menu-prerelease.json"
         - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.png" "{{ PREFIX }}/Menu/ecodata-icon.png"
         - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.icns" "{{ PREFIX }}/Menu/ecodata-icon.icns"
         - cp "{{ RECIPE_DIR }}/menu/ecodata-icon.ico" "{{ PREFIX }}/Menu/ecodata-icon.ico"
-        
+
     requirements:
       build:
         - sed  # [unix]
